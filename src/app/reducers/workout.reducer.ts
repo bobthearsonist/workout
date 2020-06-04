@@ -1,11 +1,11 @@
-import * as PostActions from '../actions/post.actions';
-import { Post }         from '../models/post.model'
+import * as WorkoutActions from '../actions/workout.actions';
+import { Workout }         from '../models/workout.model'
 
-export type Action = PostActions.All;
+export type Action = WorkoutActions.All;
 
 /// Default app state
-const defaultState: Post = {
-  text: 'Hello. I am the default post',
+const defaultState: Workout = {
+  text: 'Hello. I am the default workout',
   likes: 0
 }
 
@@ -16,20 +16,20 @@ const newState = (state, newData) => {
 
 
 /// Reducer function
-export function postReducer(state: Post = defaultState, action: Action) {
+export function workoutReducer(state: Workout = defaultState, action: Action) {
   console.log(action.type, state)
 
 	switch (action.type) {
-  		case PostActions.EDIT_TEXT:
+  		case WorkoutActions.EDIT_TEXT:
   			return newState(state, { text: action.payload });
 
-      case PostActions.UPVOTE:
+      case WorkoutActions.UPVOTE:
         return newState(state, { likes: state.likes + 1 });
 
-  		case PostActions.DOWNVOTE:
+  		case WorkoutActions.DOWNVOTE:
   			return newState(state, { likes: state.likes - 1 });
 
-  		case PostActions.RESET:
+  		case WorkoutActions.RESET:
   			return defaultState;
 
   		default:

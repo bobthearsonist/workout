@@ -1,8 +1,8 @@
-<div *ngIf="post | async as p">
+<div *ngIf="workout | async as w">
 
 
-    <h2>{{ p.text }}</h2>
-    <h4>Votes: {{ p.likes }}</h4>
+    <h2>{{ w.text }}</h2>
+    <h4>Votes: {{ w.likes }}</h4>
   
     <button (click)="upvote()">Upvote</button>
     <button (click)="downvote()">Downvote</button>

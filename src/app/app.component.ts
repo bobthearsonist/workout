@@ -3,12 +3,12 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import { Post } from './models/post.model';
-import * as PostActions from './actions/post.actions';
+import { Workout } from './models/workout.model';
+import * as WorkoutActions from './actions/workout.actions';
 
 
 interface AppState {
-  post: Post;
+  workout: Workout;
 }
 
 @Component({
@@ -18,27 +18,27 @@ interface AppState {
 })
 export class AppComponent {
 
-  post: Observable<Post>
+  workout: Observable<Workout>
 
   text: string; /// form input val
 
   constructor(private store: Store<AppState>) {
-    this.post = this.store.select('post')
+    this.workout = this.store.select('workout')
   }
 
   editText() {
-    this.store.dispatch(new PostActions.EditText(this.text) )
+    this.store.dispatch(new WorkoutActions.EditText(this.text) )
   }
 
   resetPost() {
-    this.store.dispatch(new PostActions.Reset())
+    this.store.dispatch(new WorkoutActions.Reset())
   }
 
   upvote() {
-    this.store.dispatch(new PostActions.Upvote())
+    this.store.dispatch(new WorkoutActions.Upvote())
   }
 
   downvote() {
-    this.store.dispatch(new PostActions.Downvote())
+    this.store.dispatch(new WorkoutActions.Downvote())
   }
 }
